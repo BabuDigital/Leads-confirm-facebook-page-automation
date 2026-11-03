@@ -64,8 +64,16 @@ if token:
     if not fb_id or not ig_id:
         sys.exit("ERROR: FB_PAGE_ID and IG_USER_ID must be set.")
     errors = []
+    # Facebook needs a PAGE token. If a user token was saved, swap it for the page token automatically.
+    page_token = token
     try:
-        r = graph(f"{fb_id}/photos", {"url": image_url, "caption": caption, "access_token": token})
+        pt = graph(fb_id, {"fields": "access_token", "access_token": token}, "GET").get("access_token")
+        if pt:
+            page_token = pt
+    except ApiError:
+        pass
+    try:
+        r = graph(f"{fb_id}/photos", {"url": image_url, "caption": caption, "access_token": page_token})
         print("Facebook posted:", r.get("post_id") or r.get("id"))
     except ApiError as e:
         errors.append(f"Facebook failed - {e}")
