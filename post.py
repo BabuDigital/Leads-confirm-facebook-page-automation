@@ -6,7 +6,7 @@ Images: any .jpg/.jpeg/.png inside images/ whose name contains dayNN (e.g. day09
 import json, os, re, sys, time, urllib.parse, urllib.request, urllib.error
 from datetime import datetime, timezone, timedelta
 
-API = "https://graph.facebook.com/v21.0"
+API = "https://graph.facebook.com/v26.0"
 IST = timezone(timedelta(hours=5, minutes=30))
 today = os.environ.get("POST_DATE") or datetime.now(IST).date().isoformat()
 DRY = os.environ.get("DRY_RUN") == "1"
