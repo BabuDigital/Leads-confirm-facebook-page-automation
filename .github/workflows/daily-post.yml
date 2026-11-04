@@ -2,7 +2,7 @@ name: Daily Facebook + Instagram post
 
 on:
   schedule:
-    - cron: "30 4 * * *"   # 04:30 UTC = 10:00 AM IST
+    - cron: "41 4 * * *"   # 04:30 UTC = 10:00 AM IST
   workflow_dispatch:
     inputs:
       post_date:
