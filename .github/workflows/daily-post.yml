@@ -1,8 +1,6 @@
 name: Daily Facebook + Instagram post
 
 on:
-  schedule:
-    
   workflow_dispatch:
     inputs:
       post_date:
